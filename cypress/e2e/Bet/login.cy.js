@@ -4,24 +4,7 @@ describe('User Login and Password Management', () => {
         // Visit the product page
         cy.visit('https://www.unibet.com/');
 
-      cy.get('.header-container .account-container') // get the containers heard and account
-      .find('.css-h33w7b') // Find the login button inside the container
-      .click(); // Click the button and open the login screen
-      
-      cy.get('[data-test-name="kaf-username-email-field"]')
-      .should('exist') // Ensure the element exists
-      .and('be.visible') // Ensure the element is visible
-      .type('sheylapsouza@gmail.com') // Type the expected value
-      .should('have.value', 'sheylapsouza@gmail.com'); // Assert the value
-
-      cy.get('[data-test-name="kaf-password-field"]')
-      .should('exist') // Ensure the element exists
-      .and('be.visible') // Ensure the element is visible
-      .type('Sh&yl@25') // Type the expected value
-      .should('have.value', 'Sh&yl@25'); // Assert the value
-
-      cy.get('[data-test-name="kaf-submit-credentials-button"]')
-      .click(); // Assert the value
+        cy.login('sheylapsouza@gmail.com', 'Sh&yl@25');
 
       cy.get('a.deposit-button[title="Deposit"]')
      .should('be.visible');

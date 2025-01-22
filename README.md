@@ -22,9 +22,11 @@ Run the following npm commands to install the necessary dependencies for your te
 
 ```bash
 # Install Cypress and necessary plugins
+npm install
+npm install -D cypress
 npm install -D cypress-xpath
-npm install typescript --save-dev
-npm install @cypress/webpack-preprocessor --save-dev
+npm install --save-dev typescript
+npm install --save-dev @cypress/webpack-preprocessor
 ```
 
 These dependencies will provide the following:
@@ -45,15 +47,14 @@ Your project folder will be structured like this:
 /cypress
   /e2e
     /Bet
-      login.cy.js      # Step definition files
-      game.cy.js      # Step definition files
+      login.cy.js        # Test suite for login functionality
+      game.cy.js         # Test suite for game functionality
   /support
-    commands.js                # Custom Cypress commands
-    e2e.ts
-    index.js
-cypress.config.js              # Cypress configuration file
-package.json                   # Project metadata and dependencies
-tsconfig.json                  # TypeScript configuration
+    commands.js          # Custom Cypress commands
+    e2e.ts               # General test configuration
+cypress.config.js         # Cypress configuration file
+package.json              # Project metadata and dependencies
+tsconfig.json             # TypeScript configuration
 ```
 
 ## Running the Test
@@ -89,3 +90,60 @@ npm cypress open
 require('cypress-xpath');
 import 'cypress-iframe';
 ```
+
+## Considerations
+
+1. **Deposit funcionatilty**:  If I had more time, I would focus on automating this functionality. I attempted to do so, but I encountered an issue where the popup did not open. Although my test logic was correct, the popup failed to appear, and I couldn't determine the exact reason.
+
+  Here’s the code I worked on:
+  describe('Deposit an amount into the account', () => {
+    
+    it('User deposits an amount into their account', () => {
+        // Visit the product page
+        cy.visit('https://www.unibet.com/');
+
+      cy.login('sheylapsouza@gmail.com', 'Sh&yl@25');
+
+      cy.get('.header-container .account-container .header-list') 
+      .find('[class*="deposit-link"]', { timeout: 10000 } )
+      .should('exist') 
+      .and('be.visible')
+      .click({ force: true });
+});
+});
+
+1. **Games funcionatilty**:  
+  If I had more time, I would dedicate effort to automating the games section. During my research, I discovered several tools that could facilitate this, but I need additional time to learn and implement them effectively.
+
+Here’s the code I have so far:
+
+it('Scenario: User opens the game', () => {
+        // Visit the product page
+        cy.visit('https://www.unibet.com/');
+
+      // Calling the login command in your tests
+      cy.login('sheylapsouza@gmail.com', 'Sh&yl@25');
+
+
+      cy.get('a[title="Casino"]')
+      .should('exist') 
+      .click({ force: true });
+
+      cy.get('.esyw3cc0.css-o3yy56 a[href="/play/book-of-cleopatra"]')
+      .should('exist')  
+      .and('be.visible') 
+      .click(); 
+
+
+      cy.get('[data-test-name="search-input-field"]')
+      .should('exist')
+      .and('be.visible') 
+      .type('oasis of dead{enter}');
+
+      cy.get('[data-test-name="game-tile-wrapper"]')
+      .should('exist') 
+      .and('be.visible')
+      .find('[data-test-name="game-tile-play-for-real-button"]')
+      .click(); 
+
+});

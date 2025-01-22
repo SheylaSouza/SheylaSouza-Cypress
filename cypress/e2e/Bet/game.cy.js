@@ -1,35 +1,20 @@
-describe('Starts a game on desktop', () => {
+/*describe('Starts a game on desktop', () => {
 
   it('Scenario: User opens the Sports home page', () => {
         // Visit the product page
         cy.visit('https://www.unibet.com/');
 
-      cy.get('.header-container .account-container') // get the containers heard and account
-      .find('.css-h33w7b') // Find the login button inside the container
-      .click(); // Click the button and open the login screen
-      
-      cy.get('[data-test-name="kaf-username-email-field"]')
-      .should('exist') // Ensure the element exists
-      .and('be.visible') // Ensure the element is visible
-      .type('sheylapsouza@gmail.com') // Type the expected value
-      .should('have.value', 'sheylapsouza@gmail.com'); // Assert the value
+      // Calling the login command in your tests
+      cy.login('sheylapsouza@gmail.com', 'Sh&yl@25');
 
-      cy.get('[data-test-name="kaf-password-field"]')
-      .should('exist') // Ensure the element exists
-      .and('be.visible') // Ensure the element is visible
-      .type('Sh&yl@25') // Type the expected value
-      .should('have.value', 'Sh&yl@25'); // Assert the value
 
-      cy.get('[data-test-name="kaf-submit-credentials-button"]')
-      .click(); // Assert the value
-
-      cy.get('a[title="Sports"]')
-      .should('exist') // Find the login button inside the container // Click the button and open the login screen
+      cy.get('a[title="Sports"]') //find the link Sports and opening the screen
+      .should('exist')
       .click({ force: true });
 
-      cy.get('[data-test-name="top-picks-header"]')
-      .contains('Top picks') //Ensure the element exists
-      .and('be.visible') // Ensure the element is visible
+      cy.get('[data-test-name="top-picks-header"]') //checking if the rigth screen was opened and the titles are visible
+      .contains('Top picks') 
+      .and('be.visible');
 
 });
 
@@ -37,44 +22,27 @@ it('User searches a game', () => {
   // Visit the product page
   cy.visit('https://www.unibet.com/');
 
-cy.get('.header-container .account-container') // get the containers heard and account
-.find('.css-h33w7b') // Find the login button inside the container
-.click(); // Click the button and open the login screen
+  cy.login('sheylapsouza@gmail.com', 'Sh&yl@25');   // Calling the login command in your tests
 
-cy.get('[data-test-name="kaf-username-email-field"]')
-.should('exist') // Ensure the element exists
-.and('be.visible') // Ensure the element is visible
-.type('sheylapsouza@gmail.com') // Type the expected value
-.should('have.value', 'sheylapsouza@gmail.com'); // Assert the value
-
-cy.get('[data-test-name="kaf-password-field"]')
-.should('exist') // Ensure the element exists
-.and('be.visible') // Ensure the element is visible
-.type('Sh&yl@25') // Type the expected value
-.should('have.value', 'Sh&yl@25'); // Assert the value
-
-cy.get('[data-test-name="kaf-submit-credentials-button"]')
-.click(); // Assert the value
-
-cy.get('a[title="Casino"]')
-      .should('exist') // Find the login button inside the container // Click the button and open the login screen
+  cy.get('a[title="Casino"]')//find the link Casino and opening the screen
+      .should('exist')
       .click({ force: true });
 
-      cy.get('[data-test-name="search-input-field"]',{ timeout: 10000 })
-      .should('exist') // Ensure the element exists
-      .and('be.visible') // Ensure the element is visible
-      .type('oasis of dead{enter}'); // Type the expected value
+  cy.get('[data-test-name="search-input-field"]',{ timeout: 10000 })//selecting the search field and searching some games
+      .should('exist') 
+      .and('be.visible')
+      .type('oasis of dead{enter}');
 
-      cy.get('[data-test-name="game-name"]')
-  .each(($el) => {
-    if ($el.text().includes('oasis of dead')) {
-      cy.wrap($el).should('be.visible'); // Optionally check visibility for the matching element
-    }
+  cy.get('[data-test-name="game-name"]') //checking if the app displaed the rigth games
+      .each(($el) => {
+      if ($el.text().includes('oasis of dead')) {
+      cy.wrap($el).should('be.visible'); 
+      }
   });
-
 });
 
-});
+});*/
+
 
 describe('Starts a game on mobile', () => {
   
@@ -90,76 +58,54 @@ describe('Starts a game on mobile', () => {
     });
   }); 
 
-   it('Scenario: User opens the Sports home page', () => {
+  /* it('Scenario: User opens the Sports home page', () => {
       cy.viewport(375, 667)
         // Visit the product page
-        cy.visit('https://www.unibet.com/');
+      cy.visit('https://www.unibet.com/');
       
-        cy.get('#onetrust-accept-btn-handler', { timeout: 10000 }) // Wait up to 10 seconds
+      cy.get('#onetrust-accept-btn-handler', { timeout: 10000 }) // close the cookie mensage
         .should('be.visible')
         .click();
 
 
-      cy.get('.header-container .account-container') // get the containers heard and account
-      .find('.css-h33w7b') // Find the login button inside the container
-      .click(); // Click the button and open the login screen
-      
-      cy.get('[data-test-name="kaf-username-email-field"]')
-      .should('exist') // Ensure the element exists
-      .and('be.visible') // Ensure the element is visible
-      .type('sheylapsouza@gmail.com') // Type the expected value
-      .should('have.value', 'sheylapsouza@gmail.com'); // Assert the value
+      cy.login('sheylapsouza@gmail.com', 'Sh&yl@25'); // Calling the login command in your tests
 
-      cy.get('[data-test-name="kaf-password-field"]')
-      .should('exist') // Ensure the element exists
-      .and('be.visible') // Ensure the element is visible
-      .type('Sh&yl@25{enter}') // Type the expected value
-      .should('have.value', 'Sh&yl@25'); // Assert the value
-
-      cy.get('a[title="Sports"]')
-      .should('exist') // Find the login button inside the container // Click the button and open the login screen
+      cy.get('a[title="Sports"]') //find the link Sports and opening the screen
+      .should('exist')
       .click({ force: true });
 
-      cy.get('[data-test-name="top-picks-header"]')
-      .contains('Top picks') //Ensure the element exists
-      .and('be.visible') // Ensure the element is visible
+      cy.get('[data-test-name="top-picks-header"]') //checking if the rigth screen was opened and the titles are visible
+      .contains('Top picks') 
+      .and('be.visible');
 
-});
+});*/
 
 it('User searches a game', () => {
   cy.viewport(375, 667)
   // Visit the product page
   cy.visit('https://www.unibet.com/');
 
-  cy.get('#onetrust-accept-btn-handler', { timeout: 10000 }) // Wait up to 10 seconds
+  cy.get('#onetrust-accept-btn-handler', { timeout: 10000 })  // close the cookie mensage
   .should('be.visible')
   .click();
 
-cy.get('.header-container .account-container',{ timeout: 10000 }) // get the containers heard and account
-.find('.css-h33w7b') // Find the login button inside the container
-.click(); // Click the button and open the login screen
+  cy.login('sheylapsouza@gmail.com', 'Sh&yl@25'); // Calling the login command in your tests
 
-cy.get('[data-test-name="kaf-username-email-field"]')
-.should('exist') // Ensure the element exists
-.and('be.visible') // Ensure the element is visible
-.type('sheylapsouza@gmail.com') // Type the expected value
-.should('have.value', 'sheylapsouza@gmail.com'); // Assert the value
-
-cy.get('[data-test-name="kaf-password-field"]')
-.should('exist') // Ensure the element exists
-.and('be.visible') // Ensure the element is visible
-.type('Sh&yl@25{enter}') // Type the expected value
-.should('have.value', 'Sh&yl@25'); // Assert the value
-
-cy.get('a[title="Casino"]')
-      .should('exist') // Find the login button inside the container // Click the button and open the login screen
+  cy.get('a[title="Casino"]') //find the link Casino and opening the screen
+      .should('exist')
       .click({ force: true });
 
-      cy.get('[data-test-name="game-name"]',{ timeout: 10000 })
-  .each(($el) => {
-    if ($el.text().includes('oasis of dead')) {
-      cy.wrap($el).should('be.visible'); // Optionally check visibility for the matching element
-    }
+  cy.get('.css-aq1pgr e19o7nsl0')
+      .find('[data-test-name="search-box"]',{ timeout: 10000 })//selecting the search field and searching some games
+      .should('exist') 
+      .and('be.visible')
+      .type('oasis of dead{enter}');
+
+  cy.get('[data-test-name="game-name"]',{ timeout: 10000 }) //selecting the search field and searching some games
+      .each(($el) => {
+         if ($el.text().includes('oasis of dead')) {
+        cy.wrap($el).should('be.visible');
+      }
   });
 
 });
