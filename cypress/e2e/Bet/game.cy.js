@@ -1,4 +1,4 @@
-/*describe('Starts a game on desktop', () => {
+describe('Starts a game on desktop', () => {
 
   it('Scenario: User opens the Sports home page', () => {
         // Visit the product page
@@ -41,7 +41,7 @@ it('User searches a game', () => {
   });
 });
 
-});*/
+});
 
 
 describe('Starts a game on mobile', () => {
@@ -58,7 +58,7 @@ describe('Starts a game on mobile', () => {
     });
   }); 
 
-  /* it('Scenario: User opens the Sports home page', () => {
+  it('Scenario: User opens the Sports home page', () => {
       cy.viewport(375, 667)
         // Visit the product page
       cy.visit('https://www.unibet.com/');
@@ -78,7 +78,7 @@ describe('Starts a game on mobile', () => {
       .contains('Top picks') 
       .and('be.visible');
 
-});*/
+});
 
 it('User searches a game', () => {
   cy.viewport(375, 667)
@@ -95,11 +95,10 @@ it('User searches a game', () => {
       .should('exist')
       .click({ force: true });
 
-  cy.get('.css-aq1pgr e19o7nsl0')
-      .find('[data-test-name="search-box"]',{ timeout: 10000 })//selecting the search field and searching some games
+  cy.get('[data-test-name="search-box"] input',{ timeout: 10000 })//selecting the search field and searching some games
       .should('exist') 
-      .and('be.visible')
-      .type('oasis of dead{enter}');
+      //.and('be.visible')
+      .type('oasis of dead{enter}', { force: true });
 
   cy.get('[data-test-name="game-name"]',{ timeout: 10000 }) //selecting the search field and searching some games
       .each(($el) => {
