@@ -1,0 +1,31 @@
+Feature: User Login and Password Management
+
+Scenario: User logs in with valid credentials
+Given the user is on the login screen
+When the user enters a valid email and password
+And clicks the "Login" button
+Then the app should display the home screen
+
+Scenario: User forgets their password
+Given the user is on the login screen
+And clicks the "Forgotten Password" link
+When the user enters their email
+And clicks the "Send Link" button
+Then the app should display a screen with instructions to update the password
+
+Feature: Starts a game
+
+Scenario: User opens the Sports home page
+Given the user is logged into the app
+When the user clicks on the "Sports" section in the navigation menu
+Then the app should display the Sports home page with the list of available games
+
+Scenario: User searches a game
+Given the user is logged into the app
+And the user is on the "Casino" section of the app
+When the user enters a game name in the search field
+And submits the search 
+Then the app should display a list of games related to the search term
+
+
+

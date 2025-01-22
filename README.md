@@ -23,20 +23,14 @@ Run the following npm commands to install the necessary dependencies for your te
 ```bash
 # Install Cypress and necessary plugins
 npm install -D cypress-xpath
-npm install @badeball/cypress-cucumber-preprocessor
 npm install typescript --save-dev
-npm install @bahmutov/cypress-esbuild-preprocessor
-npm install cypress @bslab/herkin --save-dev
 npm install @cypress/webpack-preprocessor --save-dev
 ```
 
 These dependencies will provide the following:
 
 - **`cypress-xpath`**: Support for XPath selectors in Cypress tests.
-- **`cypress-cucumber-preprocessor`**: Support for Gherkin syntax to write tests in a BDD style.
 - **`typescript`**: TypeScript support for better type checking and autocompletion.
-- **`@bahmutov/cypress-esbuild-preprocessor`**: Preprocessing TypeScript and JavaScript code for faster builds.
-- **`@bslab/herkin`**: Integration of Gherkin with Cypress for behavior-driven testing.
 - **`@cypress/webpack-preprocessor`**: Webpack preprocessor for Cypress tests.
 ```
 ```
@@ -50,14 +44,13 @@ Your project folder will be structured like this:
 ```
 /cypress
   /e2e
-    /features
-      unibet.feature       # Gherkin feature files
-    /step_definitions
-      login.steps.js      # Step definition files
+    /Bet
+      login.cy.js      # Step definition files
+      game.cy.js      # Step definition files
   /support
     commands.js                # Custom Cypress commands
-  /fixtures
-    example.json               # Sample test data (optional)
+    e2e.ts
+    index.js
 cypress.config.js              # Cypress configuration file
 package.json                   # Project metadata and dependencies
 tsconfig.json                  # TypeScript configuration
@@ -94,4 +87,5 @@ npm cypress open
 
 ```javascript
 require('cypress-xpath');
+import 'cypress-iframe';
 ```

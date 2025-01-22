@@ -4,15 +4,23 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "open": "cypress open"
+    "open": "cypress open",
+    "test:desktop": "cypress open --config viewportWidth=1280,viewportHeight=800",
+    "test:mobile": "cypress open --config viewportWidth=375,viewportHeight=667"
   },
   "keywords": [],
   "author": "Sheyla Souza",
   "license": "ISC",
   "description": "Automation test for Kindred",
   "devDependencies": {
-    "@badeball/cypress-cucumber-preprocessor": "^21.0.3",
     "@cypress/webpack-preprocessor": "^6.0.2",
-    "cypress": "^13.17.0"
+    "cypress": "^13.0.0",
+    "cypress-iframe": "^1.0.1",
+    "cypress-xpath": "^2.0.1",
+    "typescript": "^5.7.3"
+  },
+  "dependencies": {
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.4"
   }
+  
 }
